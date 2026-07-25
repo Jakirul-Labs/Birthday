@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday Galib 🎉</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+
+background:linear-gradient(135deg,#000,#111,#1d1d1d);
+overflow-x:hidden;
+color:white;
+text-align:center;
+}
+
+.container{
+
+padding:40px 20px;
+
+}
+
+button{
+
+padding:16px 40px;
+font-size:20px;
+border:none;
+border-radius:40px;
+cursor:pointer;
+background:gold;
+font-weight:bold;
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:scale(1.08);
+
+}
+
+.hidden{
+
+display:none;
+
+}
+
+h1{
+
+font-size:50px;
+margin-top:20px;
+color:#FFD700;
+text-shadow:0 0 20px gold;
+
+}
+
+.message{
+
+max-width:800px;
+margin:auto;
+margin-top:20px;
+font-size:22px;
+line-height:1.8;
+
+}
+
+.gallery{
+
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:30px;
+margin-top:50px;
+
+}
+
+.gallery img{
+    width: 420px;
+    max-width: 95%;
+    height: auto;
+    border-radius: 20px;
+    border: 3px solid gold;
+    box-shadow: 0 15px 40px rgba(255,215,0,.35);
+    transition: .4s;
+    object-fit: contain; /* অথবা এই লাইনটাই বাদ দিতে পারো */
+}
+.gallery img:hover{
+
+transform:scale(1.05);
+
+}
+
+.from{
+
+margin-top:50px;
+font-size:30px;
+color:#FFD700;
+
+}
+
+canvas{
+
+position:fixed;
+top:0;
+left:0;
+pointer-events:none;
+
+}
+
+.balloon{
+
+position:fixed;
+bottom:-150px;
+font-size:40px;
+animation:float 12s linear infinite;
+
+}
+
+@keyframes float{
+
+0%{transform:translateY(0);}
+100%{transform:translateY(-120vh);}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<button onclick="start()">🎁 Open Your Gift</button>
+
+<div id="content" class="hidden">
+
+<h1 id="title"></h1>
+
+<p class="message">
+
+🎂 Wishing you endless happiness, success, good health, and unforgettable memories.<br><br>
+
+Thank you for being such an amazing friend ❤️<br><br>
+
+May every dream of yours come true.<br><br>
+
+Enjoy your special day! 🎉
+
+</p>
+
+<div class="gallery">
+
+<img src="photo1.jpg">
+
+<img src="photo2.jpg">
+
+</div>
+
+<div class="from">
+
+❤️ From JSon ❤️
+
+</div>
+
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+
+function typeWriter(text,id,i=0){
+
+if(i<text.length){
+
+document.getElementById(id).innerHTML+=text.charAt(i);
+
+setTimeout(()=>typeWriter(text,id,i+1),80);
+
+}
+
+}
+
+function start(){
+
+document.querySelector("button").style.display="none";
+
+document.getElementById("content").classList.remove("hidden");
+
+typeWriter("🎉 Happy Birthday Galib 🎉","title");
+
+setInterval(()=>{
+
+confetti({
+
+particleCount:150,
+
+spread:120,
+
+origin:{y:.6}
+
+});
+
+},2200);
+
+for(let i=0;i<20;i++){
+
+let b=document.createElement("div");
+
+b.className="balloon";
+
+b.innerHTML=["🎈","🎉","✨","🎂"][Math.floor(Math.random()*4)];
+
+b.style.left=Math.random()*100+"vw";
+
+b.style.animationDuration=6+Math.random()*6+"s";
+
+document.body.appendChild(b);
+
+}
+
+}
+
+</script>
+
+</body>
+
+</html>
